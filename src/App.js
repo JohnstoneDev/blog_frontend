@@ -1,12 +1,12 @@
 import './App.css';
-import { Home } from './Components/Home';
+import { Paths } from './Components/Routes';
 
 function App() {
   return (
     <div 
       className
-      ="text-center text-2xl">
-     <Home />
+      ="text-center text-2xl bg-[#0B0C10] font-main text-[#D1E8E2] h-screen w-screen bg-cover">
+       <Paths  />
     </div>
   );
 }
