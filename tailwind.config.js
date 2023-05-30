@@ -6,7 +6,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily : {
-        'main' : ['Inconsolata', 'monospace']
+        'main' : ['Inconsolata', 'monospace'],
+        'headings' : ['Clash Display', 'sans-serif'],
+        'content' : ['Archivo', 'sans-serif'],
       },
       screens: {
         'mobile' : '375px',
