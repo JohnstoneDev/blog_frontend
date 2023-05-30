@@ -45,5 +45,3 @@ export function Stories(){
 	)
 }
 
-
-// {/* <DisplayStory key={story.id} {...story} /> */}
