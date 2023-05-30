@@ -1,13 +1,31 @@
+import { createContext, useEffect, useState } from "react"
+
+import { Stories } from "./Stories";
+
+export const StoriesContext = createContext();
+
 export function Home(){
+	const [ stories, setStories ] = useState([]);
+
+	function callBackendStories(){
+		fetch('/posts')
+		.then(r => r.ok? r.json() : console.log(r))
+		.then(d => {
+			setStories(d);
+		})
+		.catch(e => console.log(e.message));
+	}
+
+	useEffect(() => {
+		callBackendStories();
+	},[]);
+
+
 	return (
-			<div
-				className="flex flex-col gap-6 items-center p-2 w-full h-full font-thin">
-				<div className="p-2 m-2">
-						<h1> This is the Home page of the blog</h1>
-						<div className="h-full w-full flex flex-col gap-6">
-							<h3 className="font-text"> Sample Content</h3>
-						</div>
-				</div>
-			</div>
+		<div className="min-h-screen p-2">
+			<StoriesContext.Provider value={{ stories }}>
+				<Stories />
+			</StoriesContext.Provider>
+		</div>
 	)
-}
+};
