@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react"
 
 import { Stories } from "./Stories";
+import { Navigation } from "./Navigation";
 
 export const StoriesContext = createContext();
 
@@ -24,6 +25,7 @@ export function Home(){
 	return (
 		<div className="min-h-screen p-2">
 			<StoriesContext.Provider value={{ stories }}>
+				<Navigation />
 				<Stories />
 			</StoriesContext.Provider>
 		</div>
