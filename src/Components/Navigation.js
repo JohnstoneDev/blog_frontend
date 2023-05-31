@@ -13,7 +13,7 @@ export const Navigation = () => {
 
 	return (
 		<div>
-			<Link className='text-4xl p-2 mb-2 font-headings' to='/'>
+			<Link className='text-6xl p-4 m-4 font-headings font-extrabold' to='/'>
 				{message}
 			</Link>
 		</div>
