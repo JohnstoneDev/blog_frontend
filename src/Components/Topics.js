@@ -27,9 +27,8 @@ export function Topics()
 
 	return (
 		<div>
-			<div className="flex justify-around align-middle text-3xl items-center font-headings p-2 m-2">
+			<div className="text-4xl text-left font-headings p-4 m-4">
 				<Link to="/">Home </Link>
-				<Link to="/">Stories</Link>
 			</div>
 
 			<div>
