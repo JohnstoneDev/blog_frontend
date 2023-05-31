@@ -4,45 +4,19 @@ import {
  } from 'react';
 
 import { TopicsContext } from './Topics';
+import { TopicDetails } from './TopicDetails';
 
 function TopicInfo({ topic, clickFunction }){
 	const { id, name } = topic;
 
 	return (
-		<div className='text-right'>
+		<div className='text-right font-headings'>
 				<button onClick={() => clickFunction(id)}>
 					{ name }
 				</button>
 		</div>
 	)
 }
-
-function TopicDetails({ details }){
-	const { name, posts  } = details;
-
-	return (
-		<div>
-				<h2 className='font-headings'>{name}</h2>
-				<div>
-					{
-						posts.map((post) => {
-							return (
-							<div key={post.id} className='flex flex-col gap-4 '>
-								<div className='p-2 shadow-lg'>
-									{post.story_summary}
-								</div>
-								<div className='p-2 shadow-lg'>
-									{post.story_summary}
-								</div>
-							</div>
-							)
-						})
-					}
-				</div>
-		</div>
-	)
-}
-
 
 export function TopicsList(){
 	const context = useContext(TopicsContext);
