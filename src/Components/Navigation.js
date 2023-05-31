@@ -12,10 +12,14 @@ export const Navigation = () => {
   },[])
 
 	return (
-		<div>
+		<div className="font-headings text-3xl grid align-middle items-center">
 			<Link className='text-6xl p-4 m-4 font-headings font-extrabold' to='/'>
 				{message}
 			</Link>
+
+			<div>
+					<Link to="/topics"> Topics </Link>
+			</div>
 		</div>
 	)
 }
