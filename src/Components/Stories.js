@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 
 import { FcCalendar } from 'react-icons/fc';
 
-import { StoriesContext } from "./Home";
+import { ApplicationContext, convertDate } from "./Home";
 
 const DisplayStory = ({ id, title, story_summary, created_at, topic }) => {
-	const written_date = new Date(created_at).toLocaleDateString();
+	const written_date = convertDate(created_at);
 
 	return (
 		<div>
@@ -14,24 +14,31 @@ const DisplayStory = ({ id, title, story_summary, created_at, topic }) => {
 						className
 						='flex flex-col gap-4 justify-end align-middle
 						 rounded cursor-pointer shadow-lg shadow-neutral-700 p-4 w-full box-border
-						 hover:shadow-2xl hover:shadow-neutral-700'>
+						 hover:shadow-2xl hover:shadow-neutral-700 bg-[#cecece] text-[#1f1a1a]'>
 
 						<section className='flex gap-4 w-full font-headings space-x-4 justify-between'>
 							<h2 className='font-headings text-4xl mb-2'>{title}</h2>
-							<h4 className='underline text-lg flex space-x-4 gap-4 items-center justify-end'> 
+							<h4 className='underline text-lg flex space-x-4 gap-4 items-center justify-end'>
 								<FcCalendar />{written_date}
 							</h4>
 						</section>
 
 						<section className='flex flex-col gap-4'>
 							<h4>{story_summary}</h4>
-							<h5 className='font-bold underline tracking-widest text-blue-500 font-headings'>{topic.name}</h5>
+						<div className='grid grid-cols-2 justify-around items-center'>
+							<Link
+								to={`/topics/`}
+								className
+								='font-bold underline tracking-widest text-blue-500 font-headings'>
+									{topic.name}
+							</Link>
 								<Link
 									to={`/story/${id}`}
-									className='hover:text-blue-500'
+									className='hover:text-blue-500 rounded bg-transparent'
 									>
 									View Full Story
 								</Link>
+						</div>
 						</section>
 
 					</div>
@@ -41,10 +48,11 @@ const DisplayStory = ({ id, title, story_summary, created_at, topic }) => {
 
 
 export function Stories(){
-	const context = useContext(StoriesContext);
+	const context = useContext(ApplicationContext);
 
 	return (
-		<div>
+		<div className='flex flex-col'>
+			<h2 className='font-headings underline'> Recent Stories</h2>
 			<div
 				className
 				='grid gap-8 text-left items-center align-middle justify-center w-full
