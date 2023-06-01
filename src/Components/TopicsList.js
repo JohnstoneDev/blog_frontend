@@ -3,16 +3,19 @@ import {
 	useState,
  } from 'react';
 
-import { TopicsContext } from './Topics';
 import { TopicDetails } from './TopicDetails';
 
-function TopicInfo({ topic, clickFunction }){
+import { TopicsContext } from './Topics';
+
+function TopicInfo({ topic, clickFunction  }){
 	const { id, name } = topic;
 
 	return (
 		<div className='text-right font-headings'>
-				<button onClick={() => clickFunction(id)}>
-					{ name }
+				<button
+					className='focus:text-green-600 focus:underline text-xl'
+					onClick={() => clickFunction(id)}>
+					{ name.toUpperCase() }
 				</button>
 		</div>
 	)
@@ -35,7 +38,9 @@ export function TopicsList(){
 		<div className='flex flex-col items-center gap-8 p-2 m-2 text-left align-middle'>
 			<div className='flex gap-4 align-middle items-center justify-center'>
 				{ context.topics.map((topic) => {
-					return <TopicInfo key={topic.id} topic={topic} clickFunction={clickFunction}/>
+					return (
+					<TopicInfo key={topic.id} topic={topic} clickFunction={clickFunction}/>
+					)
 				})}
 			</div>
 
