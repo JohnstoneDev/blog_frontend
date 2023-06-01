@@ -4,8 +4,8 @@ import {
  } from 'react';
 
 import { TopicDetails } from './TopicDetails';
+import { GlobalContext } from '../App';
 
-import { TopicsContext } from './Topics';
 
 function TopicInfo({ topic, clickFunction  }){
 	const { id, name } = topic;
@@ -22,7 +22,7 @@ function TopicInfo({ topic, clickFunction  }){
 }
 
 export function TopicsList(){
-	const context = useContext(TopicsContext);
+	const context = useContext(GlobalContext);
 
 	const [ details, setDetails ] = useState({
 		name : '',

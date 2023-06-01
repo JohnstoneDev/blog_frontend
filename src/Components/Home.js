@@ -1,16 +1,8 @@
-import {
-	createContext,
-	useEffect,
-	useState
-} from "react";
-
 import { useNavigate } from "react-router-dom";
 
 
 import { Stories } from "./Stories";
 import { Navigation } from "./Navigation";
-
-export const ApplicationContext = createContext();
 
 export const convertDate = (date_input) => {
 	return new Date(date_input).toLocaleString();
@@ -29,28 +21,11 @@ export const BackButton = () => {
 }
 
 export function Home(){
-	const [ stories, setStories ] = useState([]);
-
-	function callBackendStories(){
-		fetch('/posts')
-		.then(r => r.ok? r.json() : console.log(r))
-		.then(d => {
-			setStories(d.sort());
-		})
-		.catch(e => console.log(e.message));
-	}
-
-	useEffect(() => {
-		callBackendStories();
-	},[]);
-
 
 	return (
 		<div className="min-h-screen p-2">
-			<ApplicationContext.Provider value={{ stories }}>
 				<Navigation />
 				<Stories />
-			</ApplicationContext.Provider>
 		</div>
 	)
 };

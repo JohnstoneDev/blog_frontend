@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom'
 
 import { FcCalendar } from 'react-icons/fc';
 
-import { ApplicationContext, convertDate } from "./Home";
+import { convertDate } from "./Home";
+import { GlobalContext } from '../App';
 
-const DisplayStory = ({ id, title, story_summary, created_at, topic }) => {
+export const DisplayStory = ({ id, title, story_summary, created_at, topic }) => {
 	const written_date = convertDate(created_at);
 
 	return (
@@ -48,11 +49,10 @@ const DisplayStory = ({ id, title, story_summary, created_at, topic }) => {
 
 
 export function Stories(){
-	const context = useContext(ApplicationContext);
+	const context = useContext(GlobalContext);
 
-	return (
-		<div className='flex flex-col'>
-			<h2 className='font-headings underline'> Recent Stories</h2>
+	function StoryList(){
+		return (
 			<div
 				className
 				='grid gap-8 text-left items-center align-middle justify-center w-full
@@ -63,6 +63,13 @@ export function Stories(){
 					})
 				}
 			</div>
+		)
+	}
+
+	return (
+		<div className='flex flex-col'>
+			<h2 className='font-headings underline'> Recent Stories</h2>
+				<StoryList />
 	</div>
 	)
 }
