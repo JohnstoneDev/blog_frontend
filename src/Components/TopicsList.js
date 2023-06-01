@@ -45,9 +45,11 @@ export function TopicsList(){
 			</div>
 
 			{
-					details.id === undefined ?
-					<div className='font-headings'> Click on a topic to show its details </div> :
-					<TopicDetails details={details}/>
+				details.id === undefined ?
+				<div className='font-headings'>
+					 Click on a topic to show its details
+				</div> :
+				<TopicDetails details={details}/>
 			}
 		</div>
 	)
