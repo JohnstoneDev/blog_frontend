@@ -16,17 +16,17 @@ function Loading(){
       <h1 className='font-headings text-8xl animate-pulse'> Loading Data ... </h1>
     </div>
   )
-}
-
+};
 
 function App() {
-  const [ stories, setStories ] = useState();
+  const [ stories, setStories ] = useState([]);
   const [ topics, setTopics ] = useState([]);
   const [ loading, setLoading ] = useState(true);
 
   const fetchSomeData = useCallback(async (url, stateFunction) => {
     const response = await fetch(url)
     const data = await response.json();
+
     stateFunction(data);
   },[])
 
@@ -48,9 +48,7 @@ function App() {
       min-w-screen bg-cover leading-loose antialiased tracking-wide overflow-y-hidden">
       <div>
         <GlobalContext.Provider value={{ topics, stories }}>
-          {
-            loading ? <Loading /> : <Paths />
-          }
+          { loading ? <Loading /> : <Paths />}
         </GlobalContext.Provider>
       </div>
     </div>
